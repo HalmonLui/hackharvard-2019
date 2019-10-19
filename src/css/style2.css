@@ -1,0 +1,74 @@
+@import(font: inherit;)
+    font-style: inherit;
+    font-variant-caps: inherit;
+    font-weight: inherit;
+    font-stretch: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    font-size-adjust: inherit;
+    font-kerning: inherit;
+    font-optical-sizing: ;
+    font-variant-alternates: inherit;
+    font-variant-east-asian: inherit;
+    font-variant-ligatures: inherit;
+    font-variant-numeric: inherit;
+    font-variant-position: inherit;
+    font-language-override: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: 
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+  
+  .bottom-left {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+  }
+  
+  .top-left {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+  }
+  
+  .top-right {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+  }
+  
+  .bottom-right {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+  }
+  
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+    div.a {
+    font-size: 20px;
+  }
+  
+  div.a {
+    font-size: 20px;
+  }
+  
+  div.a {
+    font-size: 20px;
+  }
+
+  div.a {
+    font-size: 20px; 
+  }
+
+  
