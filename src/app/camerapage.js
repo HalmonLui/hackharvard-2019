@@ -9,7 +9,13 @@ export default class CameraPage extends React.Component {
   camera = null;
 
   state = {
-    hasCameraPermission: null
+    hasCameraPermission: null,
+    status: null,
+    anime: null,
+    episode: null,
+    time: null,
+    confidence: null,
+    photo: null
   };
 
   async componentDidMount() {
@@ -20,6 +26,18 @@ export default class CameraPage extends React.Component {
 
     this.setState({ hasCameraPermission });
   }
+
+  snap = async () => {
+    if (this.camera) {
+      this.setState({ status: "Taking photo..." });
+      let photo = await this.camera.takePictureAsync(
+        (options = { quality: 0.9, base64: true })
+      );
+      this.setState({ status: "Saving photo...", photo: photo });
+
+      console.log(photo.base64);
+    }
+  };
 
   render() {
     const { hasCameraPermission } = this.state;
@@ -35,7 +53,7 @@ export default class CameraPage extends React.Component {
         <Text style={styles.title}>アニメCam</Text>
         <Camera style={styles.preview} ref={camera => (this.camera = camera)} />
         <View style={styles.cameraContainer}></View>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={this.snap}>
           <Text>Find Anime</Text>
         </TouchableOpacity>
         <Text style={styles.info}>{this.state.status}</Text>
