@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import * as Permissions from "expo-permissions";
 import { Camera } from "expo-camera";
 
@@ -32,7 +32,17 @@ export default class CameraPage extends React.Component {
 
     return (
       <View>
+        <Text style={styles.title}>アニメCam</Text>
         <Camera style={styles.preview} ref={camera => (this.camera = camera)} />
+        <View style={styles.cameraContainer}></View>
+        <TouchableOpacity style={styles.button}>
+          <Text>Find Anime</Text>
+        </TouchableOpacity>
+        <Text style={styles.info}>{this.state.status}</Text>
+        <Text style={styles.info}>Anime: {this.state.anime}</Text>
+        <Text style={styles.info}>Episode: {this.state.episode}</Text>
+        <Text style={styles.info}>Time: {this.state.time}</Text>
+        <Text style={styles.info}>Confidence: {this.state.confidence}</Text>
       </View>
     );
   }
