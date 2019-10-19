@@ -22,7 +22,7 @@ def getAnimeName(imageLink):
 
     animeName = str(jsonResult['docs'][0]['title_english'])
     animeEpisode = str(jsonResult['docs'][0]['episode'])
-    #animeSimilarity = str((jsonResult['docs'][0]['similarity']))
+    #animeSimilarity = str((jsonResult['docs'][0]['similari                                                                                                                         ty']))
     animeSimilarity = '{0:.1f}'.format((float(("%.3f" % round((jsonResult['docs'][0]['similarity']),4)))) * 100)
 
     animeTimeMin = str(datetime.timedelta(seconds = jsonResult['docs'][0]['at']))
@@ -38,19 +38,24 @@ def getAnimeName(imageLink):
     "malID": animeMALID
     }
 
-@app.route("/anime/<path:animeMALID>")
-def getAnimeInfo(animeMALID):
-    r = requests.get(f'https://api.jikan.moe/v3/anime/{animeMALID}')
+    return(animeDict)
+
+@app.route("/animeMAL/<path:MALID>")
+def getAnimeMALID(MALID):
+    r = requests.get(f'https://api.jikan.moe/v3/anime/{MALID}')
     response = r.json()
     print(type(response))
     result = json.dumps(response)
     jsonResult = json.loads(result)
-    print(jsonResult['url'])
+    resultURL = (jsonResult['url'])
+
+    return(resultURL)
+
+    #malURL = str(jsonResult['url'])
+    #return(malURL)
 
 
 
 
 
 # printing result as string
-    print(type((float(("%.3f" % round((jsonResult['docs'][0]['similarity']),2))))))
-    return(animeDict)
