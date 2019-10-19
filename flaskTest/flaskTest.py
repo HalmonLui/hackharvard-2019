@@ -4,8 +4,10 @@ import json
 import collections
 import time
 import datetime
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 def hello():
@@ -18,7 +20,7 @@ def getAnimeName(imageLink):
     print(type(response))
     result = json.dumps(response)
     jsonResult = json.loads(result)
-    print(jsonResult['CacheHit'])
+    #print(jsonResult['CacheHit'])
 
     animeName = str(jsonResult['docs'][0]['title_english'])
     animeEpisode = str(jsonResult['docs'][0]['episode'])
@@ -38,7 +40,7 @@ def getAnimeName(imageLink):
     "malID": animeMALID
     }
 
-    return(animeDict)
+    return(str(animeDict))
 
 @app.route("/animeMAL/<path:MALID>")
 def getAnimeMALID(MALID):
